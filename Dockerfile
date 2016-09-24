@@ -3,7 +3,7 @@ MAINTAINER Michael Prinsloo
 
 RUN apk update																																&& \
 # Add permanent.
-apk add --update git mercurial gcc ctags bash	curl														&& \
+apk add --update git mercurial gcc ctags bash	curl sudo												&& \
 # Add temporary.
 apk add --update --virtual build-deps build-base 	make libxpm-dev									\
 	libx11-dev libxt-dev ncurses-dev																 						&& \
@@ -40,10 +40,21 @@ apk add --update --virtual build-deps build-base 	make libxpm-dev									\
 	make install																																&& \
 	apk del build-deps																													&& \
 	apk add libsm libice libxt libx11 ncurses																		&& \
+# Add govide user.
+	mkdir /project																															&& \
+	adduser -h /home/govide -s /bin/bash -g "" -D -u 1000 govide govide					&& \
+	chown -R govide:govide /home/govide /go /project														&& \
+	echo "ALL						ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers							&& \
 # Cleanup.
 	rm -rf /var/cache/* /var/log/* /var/tmp/*																		&& \
 	mkdir /var/cache/apk																												&& \
 	cd /usr/share/vim/vim80																											&& \
 	rm -rf /tmp/*
+
+USER govide
+
+VOLUME /project
+
+WORKDIR /project
 
 CMD /bin/bash -c /usr/bin/vim
