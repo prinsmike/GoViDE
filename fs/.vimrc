@@ -309,5 +309,4 @@ silent! source ./.vimrc.local
 " Remap mappings that get overwritten by plugins.
 set rtp+=~/.vim/after/
 
-
-
+set foldmethod=marker
