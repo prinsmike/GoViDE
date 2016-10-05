@@ -16,7 +16,7 @@ cat > /tmp/govide <<EOF
 #!/bin/bash
 
 if [ \$(command -v docker) ]; then
-	docker run --rm -tiv \${GOPATH}:/go prinsmike/govide
+	docker run --rm -tiv \${GOPATH}/src:/go/src prinsmike/govide
 else
 	echo -e 'This program requires Docker, please install docker'
 fi
