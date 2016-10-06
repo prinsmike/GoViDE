@@ -10,7 +10,8 @@ ADD fs/ /tmp
 
 RUN apk update																																&& \
 # Add permanent.
-apk add --update git mercurial gcc ctags bash	curl sudo bash-completion lynx	&& \
+apk add --update git mercurial gcc ctags bash	curl sudo bash-completion 					\
+	lynx	openssh																																&& \
 # Add temporary.
 apk add --update --virtual build-deps build-base 	make libxpm-dev									\
 	libx11-dev libxt-dev ncurses-dev llvm perl cmake python-dev			 						&& \
@@ -44,22 +45,22 @@ apk add --update --virtual build-deps build-base 	make libxpm-dev									\
 		--enable-gui=no																																\
 		--without-x																																		\
 		--disable-netbeans																														\
-		--prefix=/usr																															&& \
-	make VIMRUNTIMEDIR=/usr/share/vim/vim80																			&& \
-	make install																																&& \
+		--prefix=/usr																																	&& \
+	make VIMRUNTIMEDIR=/usr/share/vim/vim80																					&& \
+	make install																																		&& \
 # Add govide user.
-#	mkdir /project																															&& \
-	mkdir -p /go/src																														&& \
-	adduser -h /home/govide -s /bin/bash -g "" -D -u 1000 govide govide					&& \
-	echo "ALL						ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers							&& \
+#	mkdir /project																																	&& \
+	mkdir -p /go/src																																&& \
+	adduser -h /home/govide -s /bin/bash -g "" -D -u 1000 govide govide							&& \
+	echo "ALL						ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers									&& \
 # Files.
-	mkdir -p /home/govide/.vim/colors /home/govide/.vim/bundle									&& \
-	mv /tmp/.profile /home/govide/																							&& \
-	mv /tmp/.bashrc /home/govide/																								&& \
-	mv /tmp/.vimrc /home/govide/																								&& \
-	mv /tmp/molokai.vim /home/govide/.vim/colors/molokai.vim										&& \
-#	chown -R govide:govide /home/govide /go /project														&& \
-	chown -R govide:govide /home/govide /go																			&& \
+	mkdir -p /home/govide/.vim/colors /home/govide/.vim/bundle /home/govide/.ssh 		&& \
+	mv /tmp/.profile /home/govide/																									&& \
+	mv /tmp/.bashrc /home/govide/																										&& \
+	mv /tmp/.vimrc /home/govide/																										&& \
+	mv /tmp/molokai.vim /home/govide/.vim/colors/molokai.vim												&& \
+#	chown -R govide:govide /home/govide /go /project																&& \
+	chown -R govide:govide /home/govide /go																					&& \
 # Build YouCompleteMe.
 	git clone --depth 1 https://github.com/Valloric/YouCompleteMe.git								\
 		/home/govide/.vim/bundle/YouCompleteMe/																		&& \
@@ -86,6 +87,7 @@ RUN	git clone https://github.com/gmarik/vundle /home/govide/.vim/bundle/vundle		
 #VOLUME /project
 
 VOLUME /go/src
+VOLUME /home/govide/.ssh
 
 #WORKDIR /project
 
