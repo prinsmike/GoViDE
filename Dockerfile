@@ -10,7 +10,7 @@ ADD fs/ /tmp
 
 RUN apk update																			&& \
 # Add permanent.
-apk add --update git mercurial gcc ctags bash	curl sudo bash-completion openssh		&& \
+apk add --update git mercurial gcc ctags bash curl sudo bash-completion openssh			&& \
 # Add temporary.
 apk add --update --virtual build-deps build-base make libxpm-dev						\
 	libx11-dev libxt-dev ncurses-dev llvm perl cmake python-dev							&& \
@@ -19,7 +19,7 @@ apk add --update --virtual build-deps build-base make libxpm-dev						\
 	golang.org/x/tools/cmd/godoc                          								\
 	golang.org/x/tools/cmd/goimports                      								\
 	golang.org/x/tools/cmd/gorename                       								\
-	golang.org/x/tools/cmd/oracle                         								\
+	golang.org/x/tools/cmd/guru                         								\
 	golang.org/x/tools/cmd/present                        								\
 # github.com
 	github.com/rogpeppe/godef                             								\

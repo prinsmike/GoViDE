@@ -269,8 +269,9 @@ endfunction
 nmap <Leader>n :call NERDTreeToggleOrFocus()<CR>
 
 " Quickfix list nav with C-n and C-m.
-map <C-n> :cn<CR>
-map <C-m> :cp<CR>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 " Multipurpose Tab-key.
 function! InsertTabWrapper()
