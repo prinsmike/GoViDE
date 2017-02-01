@@ -99,7 +99,7 @@ set noswapfile
 set nobackup
 set nowb
 
-" Auto complet menu.
+" Auto complete menu.
 set completeopt=longest,menu
 
 " Set tab size.
@@ -112,6 +112,7 @@ set autoindent
 " Replace trailing whitespace and tabs with unicode characters.
 exec "set listchars=tab:\uBB\uBB,trail:\u2716,nbsp:~"
 set list
+hi SpecialKey ctermfg=16
 
 " Enable syntax highlighting
 syntax enable
@@ -170,7 +171,7 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " Vim-go.
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
-let g:go_lsit_type = "quickfix"
+let g:go_list_type = "quickfix"
 
 " Show a list of interfaces which is implemented by the type under your
 " cursor.

@@ -6,11 +6,11 @@ echo -e '>> Checking for Docker install and pulling image.'
 if [ $(command -v docker) ]; then
 	docker pull prinsmike/govide
 else
-	echo -e 'ERROR: Docker is not installed or under bin as docker.'
+	echo -e 'ERROR: Docker is not installed in your path.'
 	exit 1
 fi
 
-echo -e '>> Setting up govide command, will require elevated provileges.'
+echo -e '>> Setting up govide command, will require elevated privileges.'
 
 cat > /tmp/govide <<EOF
 #!/bin/bash
