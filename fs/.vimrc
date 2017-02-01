@@ -112,7 +112,6 @@ set autoindent
 " Replace trailing whitespace and tabs with unicode characters.
 exec "set listchars=tab:\uBB\uBB,trail:\u2716,nbsp:~"
 set list
-hi SpecialKey ctermfg=16
 
 " Enable syntax highlighting
 syntax enable
@@ -313,3 +312,5 @@ silent! source ./.vimrc.local
 set rtp+=~/.vim/after/
 
 set foldmethod=marker
+
+hi SpecialKey ctermfg=16
